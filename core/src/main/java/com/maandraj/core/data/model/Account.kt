@@ -1,7 +1,7 @@
 package com.maandraj.core.data.model
 
-data class AuthToken(
-    val userId: String,
+data class Account(
     val accessToken: String,
     val expiresTime: Long,
+    val userId: Int,
 )

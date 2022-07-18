@@ -9,8 +9,8 @@ import com.maandraj.auth_api.AuthFeatureApi
 import com.maandraj.auth_impl.di.AuthScreenDepsProvider
 import com.maandraj.auth_impl.di.DaggerAuthComponent
 import com.maandraj.auth_impl.presentation.authScreen.AuthScreen
-import com.maandraj.core.route.AUTH_ROUTE
 import com.maandraj.core.utils.daggerViewModel
+import com.maandraj.core.utils.route.AUTH_ROUTE
 
 class AuthFeatureImpl : AuthFeatureApi {
     override fun route(): String = AUTH_ROUTE
@@ -30,7 +30,7 @@ class AuthFeatureImpl : AuthFeatureApi {
                         .build().getViewModel()
                 }
             }
-            AuthScreen(navController = navController, modifier = modifier, viewModel =  viewModel )
+            AuthScreen(navController = navController, modifier = modifier, viewModel = viewModel)
         }
     }
 }

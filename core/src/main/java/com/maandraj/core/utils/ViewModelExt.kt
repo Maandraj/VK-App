@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 @Composable
 inline fun <reified T : ViewModel> daggerViewModel(
     key: String? = null,
-    crossinline viewModelInstanceCreator: () -> T
+    crossinline viewModelInstanceCreator: () -> T,
 ): T =
     androidx.lifecycle.viewmodel.compose.viewModel(
         modelClass = T::class.java,

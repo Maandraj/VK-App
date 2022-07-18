@@ -1,4 +1,4 @@
-package com.maandraj.vk_app.ui.main
+package com.maandraj.vk_app.ui.main.graph
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -9,11 +9,11 @@ import com.maandraj.feature_api.utils.register
 
 
 @Composable
-fun SecurityGraph(
+fun SafeGraph(
     modifier: Modifier = Modifier,
     navController: NavHostController,
     authFeatureApi: AuthFeatureApi,
-    startDestination : String,
+    startDestination: String,
 ) {
     NavHost(
         navController = navController,
@@ -24,5 +24,18 @@ fun SecurityGraph(
             navController = navController,
             modifier = modifier
         )
+    }
+}
+@Composable
+fun UnsafeGraph(
+    modifier: Modifier = Modifier,
+    navController: NavHostController,
+    startDestination: String,
+) {
+    NavHost(
+        navController = navController,
+        startDestination = startDestination
+    ) {
+       // TODO Register screen
     }
 }
