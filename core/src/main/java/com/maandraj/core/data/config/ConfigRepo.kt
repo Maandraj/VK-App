@@ -1,12 +1,18 @@
 package com.maandraj.core.data.config
 
-import com.maandraj.core.data.model.Account
+import android.content.Context
 import com.maandraj.core.data.result.ResultOf
+import com.vk.dto.common.id.UserId
 
 
 interface ConfigRepo {
     fun isLogged(): Boolean
-    fun saveAccount(account: Account): ResultOf<Boolean>
-    fun isSeanceNotExpired(): ResultOf<Boolean>
-    fun logout()
+    fun saveAccount(
+        context: Context,
+        accessToken: String,
+        userId: UserId,
+        secret: String? = null,
+    ): ResultOf<Boolean>
+
+    fun logout(): ResultOf<Boolean>
 }

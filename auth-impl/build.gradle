@@ -21,7 +21,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-        debug{
+        debug {
             buildConfigField "String", "AUTH_URL", '"oauth.vk.com"'
         }
     }
@@ -51,6 +51,7 @@ dependencies {
     implementation project(":core")
     implementation project(":core-ui")
     implementation project(":auth-api")
+    implementation project(":album-api")
 
     //Compose
     implementation "androidx.compose.ui:ui:$compose_version"
@@ -60,14 +61,6 @@ dependencies {
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
-
-
-    implementation 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:3.0.0-RC3'
-
-    //Moshi
-    def moshi_version = "1.13.0"
-    implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
-    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
 
     //Dagger 2
     implementation "com.google.dagger:dagger:$dagger_version"

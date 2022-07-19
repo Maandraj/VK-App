@@ -3,7 +3,7 @@ package com.maandraj.auth_impl.di
 import com.maandraj.auth_impl.data.AuthRepo
 import com.maandraj.auth_impl.data.AuthRepoImpl
 import com.maandraj.auth_impl.domain.AuthInteractor
-import com.maandraj.auth_impl.presentation.authScreen.AuthVM
+import com.maandraj.auth_impl.ui.authScreen.AuthVM
 import dagger.Module
 import dagger.Provides
 

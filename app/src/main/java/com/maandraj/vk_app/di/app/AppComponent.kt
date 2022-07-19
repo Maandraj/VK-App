@@ -1,6 +1,7 @@
 package com.maandraj.vk_app.di.app
 
 import android.content.Context
+import com.maandraj.album_impl.di.AlbumScreenDeps
 import com.maandraj.auth_api.AuthFeatureApi
 import com.maandraj.auth_impl.di.AuthScreenDeps
 import com.maandraj.core.data.config.ConfigRepo
@@ -12,7 +13,7 @@ import javax.inject.Scope
 
 @AppScope
 @Component(modules = [AppModule::class])
-interface AppComponent : AuthScreenDeps, MainActivityDeps {
+interface AppComponent : AuthScreenDeps, MainActivityDeps, AlbumScreenDeps {
     @Component.Builder
     interface Builder {
         @BindsInstance

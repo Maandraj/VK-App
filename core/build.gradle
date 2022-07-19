@@ -18,9 +18,10 @@ android {
     localProperties.load(new FileInputStream(rootProject.file("local.properties")))
     buildTypes {
         release {
+            resValue "integer", "com_vk_sdk_AppId", localProperties['client_id']
             buildConfigField "String", "BASE_URL", '"https://api.vk.com/"'
             buildConfigField "String", "REDIRECT_URI", '"https://oauth.vk.com/blank.html"'
-            buildConfigField "String", "CLIENT_ID", localProperties['client_id']
+            buildConfigField "String", "CLIENT_ID", '"' + localProperties['client_id'] + '"'
             buildConfigField "String", "DISPLAY", '"mobile"'
             buildConfigField "String", "SCOPE", '"photos"'
             buildConfigField "String", "RESPONSE_TYPE", '"token"'
@@ -29,9 +30,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
+            resValue "integer", "com_vk_sdk_AppId", localProperties['client_id']
             buildConfigField "String", "BASE_URL", '"https://api.vk.com/"'
             buildConfigField "String", "REDIRECT_URI", '"https://oauth.vk.com/blank.html"'
-            buildConfigField "String", "CLIENT_ID", localProperties['client_id']
+            buildConfigField "String", "CLIENT_ID", '"' + localProperties['client_id'] + '"'
             buildConfigField "String", "DISPLAY", '"mobile"'
             buildConfigField "String", "SCOPE", '"photos"'
             buildConfigField "String", "RESPONSE_TYPE", '"token"'
@@ -69,6 +71,12 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
 
+    //VK
+    def vk_version = "3.5.2"
+    api "com.vk:android-sdk-core:$vk_version"
+    api "com.vk:android-sdk-api:$vk_version"
+    def nav_version = "2.5.0-rc01"
+    api "androidx.navigation:navigation-compose:$nav_version"
     //Gson
     implementation 'com.google.code.gson:gson:2.9.0'
 
@@ -79,9 +87,8 @@ dependencies {
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
-    implementation  'androidx.lifecycle:lifecycle-viewmodel-compose:2.5.0-rc01'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.5.0-rc01'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
-
 
 
 }

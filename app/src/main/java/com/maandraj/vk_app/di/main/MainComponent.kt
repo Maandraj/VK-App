@@ -1,6 +1,7 @@
 package com.maandraj.vk_app.di.main
 
 import androidx.annotation.RestrictTo
+import com.maandraj.album_api.AlbumFeatureApi
 import com.maandraj.auth_api.AuthFeatureApi
 import com.maandraj.core.data.config.ConfigRepo
 import com.maandraj.vk_app.ui.main.activity.MainActivity
@@ -26,6 +27,7 @@ internal interface MainComponent {
 
 interface MainActivityDeps {
     val authFeatureApi: AuthFeatureApi
+    val albumFeatureApi: AlbumFeatureApi
     val configRepo: ConfigRepo
 }
 

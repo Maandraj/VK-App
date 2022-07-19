@@ -2,7 +2,8 @@ package com.maandraj.auth_impl.di
 
 import android.content.Context
 import androidx.annotation.RestrictTo
-import com.maandraj.auth_impl.presentation.authScreen.AuthVM
+import com.maandraj.album_api.AlbumFeatureApi
+import com.maandraj.auth_impl.ui.authScreen.AuthVM
 import com.maandraj.core.data.config.ConfigRepo
 import dagger.Component
 import javax.inject.Scope
@@ -25,6 +26,7 @@ internal interface AuthComponent {
 
 interface AuthScreenDeps {
     val applicationContext: Context
+    val albumFeatureApi: AlbumFeatureApi
     val configRepo: ConfigRepo
 }
 
