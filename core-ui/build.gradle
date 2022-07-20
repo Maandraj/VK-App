@@ -27,6 +27,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        compose true
+    }
 }
 
 dependencies {
@@ -45,4 +48,8 @@ dependencies {
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
+
+    //Glide
+    implementation "com.google.accompanist:accompanist-glide:0.10.0"
+
 }

@@ -1,33 +1,54 @@
 package com.maandraj.core.data.config
 
-import android.content.SharedPreferences
-import com.google.gson.Gson
-import com.maandraj.core.data.model.AuthToken
+import android.content.Context
+import android.util.Log
+import com.maandraj.core.R
+import com.maandraj.core.data.result.ResultOf
+import com.vk.api.sdk.VK
+import com.vk.dto.common.id.UserId
 import javax.inject.Inject
 
 class ConfigRepoImpl @Inject constructor(
-    private val sharedPref: SharedPreferences,
+    private val context: Context,
 ) : ConfigRepo {
 
-    override fun isLogged() : Boolean {
-        return sharedPref.contains(TOKEN)
-    }
-    override fun saveAccessToken(authToken: AuthToken) {
-        val authTokenJson = Gson().toJson(authToken)
-        sharedPref.edit().putString(TOKEN, authTokenJson).apply()
-    }
-
-    override fun checkTimeToken() : Boolean {
-        val tokenJson = sharedPref.getString(TOKEN,null) ?: return false
-        val token = Gson().fromJson(tokenJson, AuthToken::class.java)
-        val currentTime = System.currentTimeMillis() * 1000
-        if (currentTime > token.expiresTime) return false
-        return true
+    override fun isLogged(): Boolean {
+        return try {
+            VK.isLoggedIn()
+        } catch (ex: Exception) {
+            Log.e(TAG, ex.message.toString())
+            false
+        }
     }
 
-    override fun logout() {
-        sharedPref.edit().remove(TOKEN).apply()
+    override fun saveAccount(
+        context: Context,
+        accessToken: String,
+        userId: UserId,
+        secret: String?,
+    ): ResultOf<Boolean> {
+        return try {
+            VK.saveAccessToken(context = context,
+                accessToken = accessToken,
+                userId = userId,
+                secret = secret)
+            ResultOf.Success(true)
+        } catch (ex: Exception) {
+            Log.e(TAG, ex.message.toString())
+            ResultOf.Failure(context.getString(R.string.error_save_account), ex)
+        }
+    }
+
+
+    override fun logout(): ResultOf<Boolean> {
+        return try {
+            VK.logout()
+            ResultOf.Success(true)
+        } catch (ex: Exception) {
+            Log.e(TAG, ex.message.toString())
+            ResultOf.Failure(context.getString(R.string.error_unknown), ex)
+        }
     }
 }
 
-private const val TOKEN = "TOKEN"
+private const val TAG = "ConfigRepo"

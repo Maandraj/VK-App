@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Errors-->
+    <string name="error_save_account">There was an error saving the account</string>
+    <string name="error_unknown">There was an unknown error</string>
+    <string name="error_account_time_expired">Seance time expired</string>
+    <string name="error_find_account">Account not find</string>
+</resources>

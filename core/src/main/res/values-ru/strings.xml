@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Ошибки-->
+    <string name="error_save_account">Возникла ошибка сохранения профиля</string>
+    <string name="error_unknown">Возникла неизвестная ошибка</string>
+    <string name="error_account_time_expired">Истекло время сессии</string>
+    <string name="error_find_account">Аккаунт не найден</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_getting_photos">There was an error with getting photos</string>
+    <string name="error_save_photo">Could not save photo</string>
+    <string name="error_download_failed">Download has been failed, please try again</string>
+    <string name="error_not_accept_download_permission">You have not accepted the download permission, please try again</string>
+    <string name="album_exit_controller_description">Exit</string>
+    <string name="album_show_menu_description">Show menu</string>
+    <string name="album_share_link_action">Send to</string>
+    <string name="album_menu_save_item_text">Save</string>
+    <string name="album_menu_share_item_text">Share</string>
+    <string name="album_photo_download">Photo saved</string>
+</resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="auth_sign_in_button_text">Войти</string>
+    <string name="auth_logged_button_text">Вы вошли</string>
+    <string name="auth_log_in_text">Пожалуйста авторизуйтесь</string>
+    <string name="auth_accept_permissions">Примите разрешения</string>
+    <string name="auth_account_blocked">Этот аккаунт заблокирован</string>
+    <string name="auth_error_blank">Что-то пошла не так</string>
+    <string name="auth_invalid_username_or_password">Неправильный логин или пароль</string>
+    <string name="auth_successful_authentication">Удачная авторизация</string>
+    <string name="auth_text_dialog">Вы точно хотите выйти?</string>
+    <string name="auth_title_dialog">Внимание</string>
+    <string name="auth_confirm_dialog">Да</string>
+    <string name="auth_dismiss_dialog">Нет</string>
+</resources>

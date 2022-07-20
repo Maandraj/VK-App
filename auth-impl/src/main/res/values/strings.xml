@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="auth_sign_in_button_text">Sign in</string>
+    <string name="auth_logged_button_text">Logged</string>
+    <string name="auth_log_in_text">Please log in</string>
+    <string name="auth_accept_permissions">Accept permissions</string>
+    <string name="auth_account_blocked">The account is blocked</string>
+    <string name="auth_error_blank">Something went wrong</string>
+    <string name="auth_invalid_username_or_password">Invalid username or password</string>
+    <string name="auth_successful_authentication">Successful authentication</string>
+    <string name="auth_text_dialog">Are you sure you want to get out?</string>
+    <string name="auth_title_dialog">Warning</string>
+    <string name="auth_confirm_dialog">Yes</string>
+    <string name="auth_dismiss_dialog">No</string>
+</resources>
