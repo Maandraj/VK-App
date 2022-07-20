@@ -2,13 +2,13 @@ package com.maandraj.core.utils.extensions
 
 import androidx.navigation.NavController
 
-fun NavController.popSaveStateNavigation(route: String, startDestinationId: Int) {
+fun NavController.popSaveStateNavigation(route: String, startDestinationId: Int, save:Boolean = true) {
     navigate(route) {
         popUpTo(startDestinationId) {
-            saveState = true
+            saveState = save
         }
         launchSingleTop = true
-        restoreState = true
+        restoreState = save
     }
 }
 

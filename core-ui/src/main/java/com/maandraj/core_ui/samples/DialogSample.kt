@@ -1,4 +1,4 @@
-package com.maandraj.auth_impl.ui.authScreen
+package com.maandraj.core_ui.samples
 
 import androidx.compose.material.AlertDialog
 import androidx.compose.material.Button

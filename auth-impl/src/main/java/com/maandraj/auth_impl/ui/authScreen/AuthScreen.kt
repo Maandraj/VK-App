@@ -28,6 +28,7 @@ import com.maandraj.core.data.result.ResultOf
 import com.maandraj.core.utils.constants.KEY_SNACKBAR
 import com.maandraj.core.utils.extensions.popSaveStateNavigation
 import com.maandraj.core_ui.LogoVK
+import com.maandraj.core_ui.samples.DialogSample
 import com.maandraj.core_ui.samples.TextButtonView
 import com.vk.dto.common.id.UserId
 import kotlinx.coroutines.*
@@ -138,11 +139,11 @@ fun VKAuthWebView(
         loadUrl(url)
     }
     if (url.isEmpty()) webView.visibility = View.GONE else webView.visibility = View.VISIBLE
-    val (showDialog, setShowDialog) = remember { mutableStateOf(false) }
     val title = stringResource(R.string.auth_title_dialog)
     val text = stringResource(R.string.auth_text_dialog)
     val confirm = stringResource(R.string.auth_confirm_dialog)
     val dismiss = stringResource(R.string.auth_dismiss_dialog)
+    val (showDialog, setShowDialog) = remember { mutableStateOf(false) }
     if (showDialog)
         DialogSample(title = title,
             text = text,
@@ -153,7 +154,6 @@ fun VKAuthWebView(
                 goneAuthWindow(viewModel)
             }
             setShowDialog(false)
-
         }
     webView.webViewClient = VKWebClient(context) { status, msg ->
         scope.launch(Dispatchers.IO) {

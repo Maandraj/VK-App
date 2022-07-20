@@ -10,4 +10,9 @@
     <string name="album_menu_save_item_text">Сохранить</string>
     <string name="album_menu_share_item_text">Поделиться</string>
     <string name="album_photo_download">Фото сохранено</string>
+    <string name="album_logout_button">Выйти</string>
+    <string name="album_text_dialog_out">Вы точно хотите из аккаунта?</string>
+    <string name="album_title_dialog_out">Внимание</string>
+    <string name="album_confirm_dialog">Да</string>
+    <string name="album_dismiss_dialog">Нет</string>
 </resources>

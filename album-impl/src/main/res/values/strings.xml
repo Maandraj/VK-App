@@ -10,4 +10,9 @@
     <string name="album_menu_save_item_text">Save</string>
     <string name="album_menu_share_item_text">Share</string>
     <string name="album_photo_download">Photo saved</string>
+    <string name="album_logout_button">Logout</string>
+    <string name="album_text_dialog_out">Are you sure you want to get out account?</string>
+    <string name="album_title_dialog_out">Warning</string>
+    <string name="album_confirm_dialog">Yes</string>
+    <string name="album_dismiss_dialog">No</string>
 </resources>

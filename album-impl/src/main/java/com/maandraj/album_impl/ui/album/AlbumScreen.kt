@@ -50,6 +50,7 @@ import com.maandraj.core_ui.colors.PrimaryColor
 import com.maandraj.core_ui.colors.SecondColor
 import com.maandraj.core_ui.imageHeightGrid
 import com.maandraj.core_ui.imageWidthGrid
+import com.maandraj.core_ui.samples.DialogSample
 import com.maandraj.core_ui.samples.TextButtonView
 import com.maandraj.core_ui.samples.loadImage
 import kotlinx.coroutines.launch
@@ -115,6 +116,7 @@ fun AlbumScreen(
                 setPhoto(it)
             })
 
+
 }
 
 @OptIn(ExperimentalFoundationApi::class, ExperimentalMaterialApi::class)
@@ -128,6 +130,22 @@ private fun AlbumContent(
     setPhoto: (photo: Photo) -> Unit,
     setOpenController: (isOpen: Boolean) -> Unit,
 ) {
+    val title = stringResource(R.string.album_photo_download)
+    val text = stringResource(R.string.album_text_dialog_out)
+    val confirm = stringResource(R.string.album_confirm_dialog)
+    val dismiss = stringResource(R.string.album_dismiss_dialog)
+    val (showDialog, setShowDialog) = remember { mutableStateOf(false) }
+    if (showDialog)
+        DialogSample(title = title,
+            text = text,
+            confirmButtonText = confirm,
+            dismissButtonText = dismiss,
+            showDialog) {
+            if (it) {
+                viewModel.logout()
+            }
+            setShowDialog(false)
+        }
     Scaffold(modifier.fillMaxSize(),
         scaffoldState = scaffoldState,
         topBar = {
@@ -135,9 +153,9 @@ private fun AlbumContent(
                 contentAlignment = Alignment.CenterEnd) {
                 TextButtonView(
                     modifier = Modifier.padding(16.dp),
-                    text = "Logout",
+                    text = stringResource(id = R.string.album_logout_button),
                     onClick = {
-                        viewModel.logout()
+                        setShowDialog(true)
                     })
             }
         },
@@ -291,50 +309,8 @@ private fun FullScreenController(
             }
         }
     }
-
-
 }
 
-@Composable
-private fun DataSetObservables(
-    navController: NavHostController,
-    context: Context,
-    scaffoldState: ScaffoldState,
-    route: String,
-    isLogout: ResultOf<Boolean>,
-    isSavePhoto: ResultOf<Boolean>,
-) {
-    isLogout.let {
-        when (it) {
-            is ResultOf.Success -> {
-                if (it.value) {
-                    navController.popSaveStateNavigation(route = route,
-                        navController.graph.startDestinationId)
-                }
-            }
-            is ResultOf.Failure -> {
-                LaunchedEffect(KEY_SNACKBAR) {
-                    scaffoldState.snackbarHostState.showSnackbar(it.message)
-                }
-            }
-        }
-    }
-    isSavePhoto.let {
-        when (it) {
-            is ResultOf.Success -> {
-                if (it.value)
-                    LaunchedEffect(KEY_SNACKBAR) {
-                        scaffoldState.snackbarHostState.showSnackbar(context.getString(R.string.album_photo_download))
-                    }
-            }
-            is ResultOf.Failure -> {
-                LaunchedEffect(KEY_SNACKBAR) {
-                    scaffoldState.snackbarHostState.showSnackbar(it.message)
-                }
-            }
-        }
-    }
-}
 
 private fun shareImage(context: Context, url: String) {
     val shareIntent = Intent()
@@ -364,3 +340,44 @@ private fun askStoragePermission(
     }
 }
 
+
+@Composable
+private fun DataSetObservables(
+    navController: NavHostController,
+    context: Context,
+    scaffoldState: ScaffoldState,
+    route: String,
+    isLogout: ResultOf<Boolean>,
+    isSavePhoto: ResultOf<Boolean>,
+) {
+    isLogout.let {
+        when (it) {
+            is ResultOf.Success -> {
+                if (it.value) {
+                    navController.popSaveStateNavigation(route = route,
+                        navController.graph.startDestinationId, save = false)
+                }
+            }
+            is ResultOf.Failure -> {
+                LaunchedEffect(KEY_SNACKBAR) {
+                    scaffoldState.snackbarHostState.showSnackbar(it.message)
+                }
+            }
+        }
+    }
+    isSavePhoto.let {
+        when (it) {
+            is ResultOf.Success -> {
+                if (it.value)
+                    LaunchedEffect(KEY_SNACKBAR) {
+                        scaffoldState.snackbarHostState.showSnackbar(context.getString(R.string.album_photo_download))
+                    }
+            }
+            is ResultOf.Failure -> {
+                LaunchedEffect(KEY_SNACKBAR) {
+                    scaffoldState.snackbarHostState.showSnackbar(it.message)
+                }
+            }
+        }
+    }
+}
