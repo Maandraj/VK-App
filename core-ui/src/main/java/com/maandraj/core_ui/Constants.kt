@@ -7,4 +7,5 @@ const val imageWidthGrid = 250
 const val imageHeightGrid = 250
 
 //Shapes
-val cardShapePhoto =  RoundedCornerShape(15.dp)
+val cardShapePhoto =  RoundedCornerShape(16.dp)
+val dialogShape =  RoundedCornerShape(16.dp)

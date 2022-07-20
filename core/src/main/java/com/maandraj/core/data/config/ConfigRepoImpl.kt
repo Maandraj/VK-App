@@ -1,7 +1,6 @@
 package com.maandraj.core.data.config
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.util.Log
 import com.maandraj.core.R
 import com.maandraj.core.data.result.ResultOf
@@ -10,14 +9,12 @@ import com.vk.dto.common.id.UserId
 import javax.inject.Inject
 
 class ConfigRepoImpl @Inject constructor(
-    private val sharedPref: SharedPreferences,
     private val context: Context,
 ) : ConfigRepo {
 
     override fun isLogged(): Boolean {
         return try {
             VK.isLoggedIn()
-
         } catch (ex: Exception) {
             Log.e(TAG, ex.message.toString())
             false
@@ -51,9 +48,7 @@ class ConfigRepoImpl @Inject constructor(
             Log.e(TAG, ex.message.toString())
             ResultOf.Failure(context.getString(R.string.error_unknown), ex)
         }
-
     }
 }
 
-private const val TOKEN = "TOKEN"
 private const val TAG = "ConfigRepo"

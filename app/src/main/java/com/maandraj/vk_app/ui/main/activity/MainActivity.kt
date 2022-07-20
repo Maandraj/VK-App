@@ -107,8 +107,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     val context = LocalContext.current
-    val shared = context.getSharedPreferences("", Context.MODE_PRIVATE)
-    val configRepo = ConfigRepoImpl(shared, context)
+    val configRepo = ConfigRepoImpl(context)
     val mainInteractor = MainInteractor(configRepo)
     VKAppTheme {
         AppContent(isNeedLogout = false,

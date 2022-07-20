@@ -12,5 +12,6 @@ interface AlbumRepo {
         url: String,
         context: Context,
         directory: File = File(Environment.DIRECTORY_PICTURES),
+        progress: (percent: Int) -> Unit,
     ): ResultOf<Boolean>
 }

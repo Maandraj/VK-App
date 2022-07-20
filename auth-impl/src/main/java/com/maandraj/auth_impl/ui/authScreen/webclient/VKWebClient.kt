@@ -11,10 +11,18 @@ import com.maandraj.core.BuildConfig
 
 class VKWebClient(
     private val context: Context,
-    private val onStatusChange: (status: AuthStatus, msg:String) -> Unit,
+    private val onStatusChange: (status: AuthStatus, msg: String) -> Unit,
 ) : WebViewClient() {
     private var _currentUrl = ""
     override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+        val url = request?.url.toString()
+        if (url.contains(SUCCESS_URL)) {
+            if (url.contains(ERROR_USER_DENIED)) {
+                onStatusChange(AuthStatus.ERROR_USER_DENIED,
+                    context.getString(R.string.auth_error_blank))
+                return true
+            }
+        }
         view?.loadUrl(request?.url.toString())
         return super.shouldOverrideUrlLoading(view, request)
     }
@@ -32,25 +40,25 @@ class VKWebClient(
                     onStatusChange(AuthStatus.AUTH, context.getString(R.string.auth_log_in_text))
                 }
                 if (url.contains(CONFIRM_PARAM)) {
-                    onStatusChange(AuthStatus.CONFIRM,  context.getString(R.string.auth_accept_permissions))
+                    onStatusChange(AuthStatus.CONFIRM,
+                        context.getString(R.string.auth_accept_permissions))
                 }
                 if (url.contains(ERROR_INVALID)) {
-                    onStatusChange(AuthStatus.ERROR_INVALID,  context.getString(R.string.auth_invalid_username_or_password))
+                    onStatusChange(AuthStatus.ERROR_INVALID,
+                        context.getString(R.string.auth_invalid_username_or_password))
                 }
             }
-            if (url.contains(ERROR_PARAM)){
+            if (url.contains(ERROR_PARAM) && !url.contains(ERROR_USER_DENIED)) {
                 onStatusChange(AuthStatus.ERROR, context.getString(R.string.auth_error_blank))
             }
             if (url.contains(BLOCKED_URL)) {
-                onStatusChange(AuthStatus.BLOCKED,  context.getString(R.string.auth_account_blocked))
+                onStatusChange(AuthStatus.BLOCKED, context.getString(R.string.auth_account_blocked))
             }
             if (url.contains(SUCCESS_URL)) {
-                if (url.contains(ERROR_USER_DENIED)){
+                if (!url.contains(ERROR_PARAM)) {
                     wv.visibility = View.GONE
-                    onStatusChange(AuthStatus.ERROR_USER_DENIED, context.getString(R.string.auth_error_blank))
-                }else{
-                    wv.visibility = View.GONE
-                    onStatusChange(AuthStatus.SUCCESS, context.getString(R.string.auth_successful_authentication))
+                    onStatusChange(AuthStatus.SUCCESS,
+                        context.getString(R.string.auth_successful_authentication))
                 }
             }
         }

@@ -34,7 +34,6 @@ fun AppContent(
                             albumFeatureApi = albumFeatureApi,
                             authFeatureApi = authFeatureApi,
                         )
-
                     } else {
                         SetGraph(
                             navigationGraph = NavigationGraph.SAFE,

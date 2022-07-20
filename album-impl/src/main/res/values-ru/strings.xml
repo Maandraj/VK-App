@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_getting_photos">Возникла ошибка при получении фотографий</string>
+    <string name="error_save_photo">Не получилось сохранить фотографию</string>
+    <string name="error_download_failed">Возникла ошибка при скачивании</string>
+    <string name="error_not_accept_download_permission">Вы не приняли разрешения, пожалуйста повторите попытку</string>
+    <string name="album_exit_controller_description">Выход</string>
+    <string name="album_show_menu_description">Показть меню</string>
+    <string name="album_share_link_action">Отправить:</string>
+    <string name="album_menu_save_item_text">Сохранить</string>
+    <string name="album_menu_share_item_text">Поделиться</string>
+    <string name="album_photo_download">Фото сохранено</string>
+</resources>

@@ -21,11 +21,13 @@ class AlbumInteractor @Inject constructor(
         url: String,
         context: Context,
         directory: File,
+        progress: (percent: Int) -> Unit,
     ) = withContext(Dispatchers.IO) {
         albumRepo.savePhoto(
             url = url,
             directory = directory,
-            context = context)
+            context = context,
+            progress = progress)
     }
 
     fun logout() = configRepo.logout()

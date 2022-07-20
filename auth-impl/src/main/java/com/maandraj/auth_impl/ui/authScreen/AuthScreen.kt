@@ -11,14 +11,12 @@ import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Scaffold
 import androidx.compose.material.ScaffoldState
 import androidx.compose.material.rememberScaffoldState
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavHostController
@@ -140,6 +138,23 @@ fun VKAuthWebView(
         loadUrl(url)
     }
     if (url.isEmpty()) webView.visibility = View.GONE else webView.visibility = View.VISIBLE
+    val (showDialog, setShowDialog) = remember { mutableStateOf(false) }
+    val title = stringResource(R.string.auth_title_dialog)
+    val text = stringResource(R.string.auth_text_dialog)
+    val confirm = stringResource(R.string.auth_confirm_dialog)
+    val dismiss = stringResource(R.string.auth_dismiss_dialog)
+    if (showDialog)
+        DialogSample(title = title,
+            text = text,
+            confirmButtonText = confirm,
+            dismissButtonText = dismiss,
+            showDialog) {
+            if (it) {
+                goneAuthWindow(viewModel)
+            }
+            setShowDialog(false)
+
+        }
     webView.webViewClient = VKWebClient(context) { status, msg ->
         scope.launch(Dispatchers.IO) {
             CoroutineScope(Dispatchers.Main).launch {
@@ -163,7 +178,7 @@ fun VKAuthWebView(
                 }
                 AuthStatus.ERROR_USER_DENIED -> {
                     Log.e(TAG, msg)
-                    goneAuthWindow(viewModel)
+                    setShowDialog(true)
                 }
                 AuthStatus.BLOCKED -> {
                     Log.e(TAG, msg)

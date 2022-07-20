@@ -5,14 +5,11 @@ import dagger.Module
 
 
 @Module(includes = [
-    NetworkModule::class,
-    CoreModule::class,
     AlbumModule::class,
     DataModule::class,
     NavigationModule::class
 ])
-class AppModule {
-}
+class AppModule
 
 
 

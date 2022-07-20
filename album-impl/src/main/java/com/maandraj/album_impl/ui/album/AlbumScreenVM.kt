@@ -25,6 +25,10 @@ class AlbumScreenVM @Inject constructor(
     private val _loading = MutableLiveData<Boolean>()
     val loading = _loading.asLiveData()
 
+    private val _progress = MutableLiveData<Int>()
+    val progress = _progress.asLiveData()
+
+
     private val _isLogout = MutableLiveData<ResultOf<Boolean>>()
     val isLogout = _isLogout.asLiveData()
 
@@ -41,11 +45,12 @@ class AlbumScreenVM @Inject constructor(
         url: String,
         context: Context,
         directory: File = File(Environment.DIRECTORY_PICTURES),
+        progress: (percent: Int) -> Unit,
     ) = viewModelScope.launch {
         _loading.postValue(true)
         val result = albumInteractor.savePhoto(url = url,
             context = context,
-            directory = directory)
+            directory = directory, progress)
         _isSavePhoto.postValue(result)
         _loading.postValue(false)
     }

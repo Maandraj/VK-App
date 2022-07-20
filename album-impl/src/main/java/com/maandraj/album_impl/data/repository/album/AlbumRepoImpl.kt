@@ -44,6 +44,7 @@ class AlbumRepoImpl @Inject constructor(
         url: String,
         context: Context,
         directory: File,
+        progress: (percent: Int) -> Unit,
     ): ResultOf<Boolean> {
         return try {
             if (!directory.exists()) {
@@ -73,11 +74,23 @@ class AlbumRepoImpl @Inject constructor(
                 if (cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS)) == DownloadManager.STATUS_SUCCESSFUL) {
                     downloading = false
                 }
+                val bytesDownloaded =
+                    cursor.getColumnIndex(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR)
+                val bytesTotal = cursor.getColumnIndex(DownloadManager.COLUMN_TOTAL_SIZE_BYTES)
+                val percent = (((bytesDownloaded * 100L) / bytesTotal).toInt())
+                progress(percent)
                 val status = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS))
                 when (status) {
-                    DownloadManager.STATUS_FAILED -> return ResultOf.Failure(context.getString(R.string.error_download_failed))
-                    DownloadManager.STATUS_SUCCESSFUL -> return ResultOf.Success(true)
+                    DownloadManager.STATUS_FAILED -> {
+                        cursor.close()
+                        return ResultOf.Failure(context.getString(R.string.error_download_failed))
+                    }
+                    DownloadManager.STATUS_SUCCESSFUL -> {
+                        cursor.close()
+                        return ResultOf.Success(true)
+                    }
                 }
+
             }
             ResultOf.Success(true)
         } catch (ex: IOException) {

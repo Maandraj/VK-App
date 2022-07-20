@@ -8,4 +8,8 @@
     <string name="auth_error_blank">Something went wrong</string>
     <string name="auth_invalid_username_or_password">Invalid username or password</string>
     <string name="auth_successful_authentication">Successful authentication</string>
+    <string name="auth_text_dialog">Are you sure you want to get out?</string>
+    <string name="auth_title_dialog">Warning</string>
+    <string name="auth_confirm_dialog">Yes</string>
+    <string name="auth_dismiss_dialog">No</string>
 </resources>
