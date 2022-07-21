@@ -15,7 +15,6 @@ class AuthVM @Inject constructor(
     private val authInteractor: AuthInteractor,
 ) : ViewModel() {
 
-
     private val _tokenUri = MutableLiveData<String>()
     val tokenUri = _tokenUri.asLiveData()
 

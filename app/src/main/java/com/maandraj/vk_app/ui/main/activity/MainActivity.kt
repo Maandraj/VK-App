@@ -1,6 +1,5 @@
 package com.maandraj.vk_app.ui.main.activity
 
-import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -21,7 +20,7 @@ import com.maandraj.core.utils.constants.KEY_SNACKBAR
 import com.maandraj.vk_app.App
 import com.maandraj.vk_app.di.main.DaggerMainComponent
 import com.maandraj.vk_app.di.main.MainActivityDepsProvider
-import com.maandraj.vk_app.domain.interator.MainInteractor
+import com.maandraj.vk_app.domain.interaсtor.MainInteractor
 import com.maandraj.vk_app.ui.main.content.AppContent
 import com.maandraj.vk_app.ui.theme.VKAppTheme
 import com.vk.api.sdk.VK

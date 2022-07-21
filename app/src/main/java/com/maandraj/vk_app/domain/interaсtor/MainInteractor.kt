@@ -1,4 +1,4 @@
-package com.maandraj.vk_app.domain.interator
+package com.maandraj.vk_app.domain.interaсtor
 
 import com.maandraj.core.data.config.ConfigRepo
 import javax.inject.Inject

@@ -17,10 +17,10 @@ android {
 
     buildTypes {
         release {
-            resValue "integer", "com_vk_sdk_AppId", "СЮДЫ КЛЮЧ ПРИЛОЖЕНИЯ НУЖЕНН"
+            resValue "integer", "com_vk_sdk_AppId", "СЮДЫ КЛЮЧ ПРИЛОЖЕНИЯ НУЖЕН"
             buildConfigField "String", "BASE_URL", '"https://api.vk.com/"'
             buildConfigField "String", "REDIRECT_URI", '"https://oauth.vk.com/blank.html"'
-            buildConfigField "String", "CLIENT_ID", '"' + "СЮДЫ КЛЮЧ ПРИЛОЖЕНИЯ НУЖЕ" + '"'
+            buildConfigField "String", "CLIENT_ID", '"' + "СЮДЫ КЛЮЧ ПРИЛОЖЕНИЯ НУЖЕН" + '"'
             buildConfigField "String", "DISPLAY", '"mobile"'
             buildConfigField "String", "SCOPE", '"photos"'
             buildConfigField "String", "RESPONSE_TYPE", '"token"'
@@ -29,7 +29,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
-            resValue ("integer", "com_vk_sdk_AppId","СЮДЫ КЛЮЧ ПРИЛОЖЕНИЯ НУЖЕН")
+            resValue "integer", "com_vk_sdk_AppId", "СЮДЫ КЛЮЧ ПРИЛОЖЕНИЯ НУЖЕН"
             buildConfigField "String", "BASE_URL", '"https://api.vk.com/"'
             buildConfigField "String", "REDIRECT_URI", '"https://oauth.vk.com/blank.html"'
             buildConfigField "String", "CLIENT_ID", '"' + "СЮДЫ КЛЮЧ ПРИЛОЖЕНИЯ НУЖЕН" + '"'

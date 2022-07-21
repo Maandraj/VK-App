@@ -14,13 +14,10 @@ class App : Application() {
             .build()
     }
 
-
     override fun onCreate() {
         super.onCreate()
         MainActivityDepsStore.deps = appComponent
         AuthScreenDepsStore.deps = appComponent
         AlbumScreenDepsStore.deps = appComponent
     }
-
-
 }

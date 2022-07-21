@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.maandraj.core.data.result.ResultOf
 import com.maandraj.core.utils.extensions.asLiveData
-import com.maandraj.vk_app.domain.interator.MainInteractor
+import com.maandraj.vk_app.domain.interaсtor.MainInteractor
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
